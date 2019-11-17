@@ -11,11 +11,7 @@ export async function addItem(item) {
         headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(item)
     })
-        .then((res) => {
-            res.json()
-            if (res.ok) return res.json();
-            throw new Error('cannot create new item');
-        })
+        .then((res) => res.json())
 }
 
 

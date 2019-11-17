@@ -16,8 +16,8 @@ class ItemForm extends Component {
     }
     handleFormSubmit = async (evt) => {
         const item = await addItem({ ...this.state });
-        this.props.addItem(item)
-        
+        this.props.addTheItem(item)
+        this.props.history.push('/items')
     }
 
     render() {
@@ -29,7 +29,6 @@ class ItemForm extends Component {
                     }}
                     onSubmit={evt => { this.handleFormSubmit(evt.preventDefault()) }}
                 >
-
                     <div>
                         <input
                             type='text'

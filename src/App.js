@@ -12,7 +12,7 @@ class App extends Component {
       items: []
     }
   }
-  addItem = item => {
+  addTheItem = item => {
     let items = [...this.state.items]
     items.push(item)
     this.setState({ items });
@@ -29,29 +29,31 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path='/' render={() =>
+          <Route exact path='/items' render={() =>
             this.state.items.length
               ?
               <div>
                 <table>
-                  <thead>
+                  <tr>
                     <th>Title</th>
                     <th>Description</th>
                     <th>Photo</th>
                     <th>Quantity</th>
-                  </thead>
+                  </tr>
+                  
                   {this.state.items.map(s => {
                     return (
-                      <div>
-                        <tr>
+                      <tr key={s._id}>
+                        
                           <td>{s.title}</td>
                           <td>{s.description}</td>
                           <td>{s.photo}</td>
                           <td>{s.quantity}</td>
-                        </tr>
-                      </div>
+                        
+                      </tr>
                     )
                   })}
+                  
                 </table>
               </div>
               :
@@ -61,9 +63,10 @@ class App extends Component {
 
           }
           />
-          <Route exact path='/add' render={() =>
+          <Route exact path='/items/add' render={props=>
             <ItemForm
-              addItem={this.addItem}
+              {...props}
+              addTheItem={this.addTheItem}
             />
           } />
         </Switch>
