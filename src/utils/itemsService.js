@@ -1,7 +1,7 @@
-const BASE_URL = "api/v1/items/"
+const BASE_URL = "/api/v1/items/"
 
 export async function getItems() {
-    return fetch(`${BASE_URL}items`)
+    return fetch(`${BASE_URL}`)
         .then((res) => res.json())
 }
 

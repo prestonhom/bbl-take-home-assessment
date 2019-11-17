@@ -10,12 +10,12 @@ class App extends Component {
     super();
     this.state = {
       items: []
-    };
+    }
   }
   addItem = item => {
     let items = [...this.state.items]
     items.push(item)
-    this.setState({ items});
+    this.setState({ items });
   }
 
   async componentDidMount() {
@@ -29,20 +29,27 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path='/items' render={() =>{
-           
-             {this.state.items.map(i=>{
-               return(
-                 <div>
-                   {i.title}
-                 </div>
-               )
-             })}
-            
-          }}
+          <Route exact path='/' render={() => 
+            this.state.items.length
+              ?
+              <div>
+                {this.state.items.map(s=>{
+                  return(
+                    <div> 
+                    <h1 style={{fontSize:'100px', color:'red'}}>{s.description}</h1>
+                    </div>
+                  )
+                })}
+              </div>
+              :
+              <div>
+                <h1>loading</h1>
+              </div>
+          
+        }
           />
           <Route exact path='/add' render={() =>
-            <ItemForm 
+            <ItemForm
               addItem={this.addItem}
             />
           } />
