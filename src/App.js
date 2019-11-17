@@ -29,24 +29,37 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path='/' render={() => 
+          <Route exact path='/' render={() =>
             this.state.items.length
               ?
               <div>
-                {this.state.items.map(s=>{
-                  return(
-                    <div> 
-                    <h1 style={{fontSize:'100px', color:'red'}}>{s.description}</h1>
-                    </div>
-                  )
-                })}
+                <table>
+                  <thead>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Photo</th>
+                    <th>Quantity</th>
+                  </thead>
+                  {this.state.items.map(s => {
+                    return (
+                      <div>
+                        <tr>
+                          <td>{s.title}</td>
+                          <td>{s.description}</td>
+                          <td>{s.photo}</td>
+                          <td>{s.quantity}</td>
+                        </tr>
+                      </div>
+                    )
+                  })}
+                </table>
               </div>
               :
               <div>
                 <h1>loading</h1>
               </div>
-          
-        }
+
+          }
           />
           <Route exact path='/add' render={() =>
             <ItemForm
