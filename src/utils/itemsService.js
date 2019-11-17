@@ -1,12 +1,12 @@
-const BASE_URL = "api/v1/items"
+const BASE_URL = "api/v1/items/"
 
 export async function getItems() {
-    return fetch(`${BASE_URL}`)
+    return fetch(`${BASE_URL}items`)
         .then((res) => res.json())
 }
 
-export async function createItem(item) {
-    return fetch(`${BASE_URL}/create`, {
+export async function addItem(item) {
+    return fetch(`${BASE_URL}add`, {
         method: 'POST',
         headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(item)
@@ -17,3 +17,5 @@ export async function createItem(item) {
             throw new Error('cannot create new item');
         })
 }
+
+

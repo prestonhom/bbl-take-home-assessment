@@ -2,7 +2,7 @@ const Item = require('../models/item')
 
 module.exports = {
     indexItems,
-    createItem
+    addItem
 }
 
 async function indexItems(req, res){
@@ -15,9 +15,10 @@ async function indexItems(req, res){
     }
 }
 
-async function createItem(req,res){
+async function addItem(req,res){
     try{
         let item =await new Item(req.body)
+        console.log(item)
         item = await item.save()
         res.json(item)
     }

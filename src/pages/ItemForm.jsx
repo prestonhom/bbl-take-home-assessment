@@ -1,30 +1,97 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {createItem} from '../utils/itemsService'
+import {addItem} from '../utils/itemsService'
 
-class ItemForm extends Component{
-    state ={
-        title:'',
+class ItemForm extends Component {
+    state = {
+        title: '',
         description: '',
         photo: '',
         quantity: ''
     }
-    handleFormChanges = async (evt) =>{
+    handleFormChanges = async (evt) => {
         this.setState({
-        [evt.target.name]: evt.target.value
+            [evt.target.name]: evt.target.value
         })
-      }  
-      handleFormSubmit = async (evt) =>{
-        const review = await createItem({...this.state });
+    }
+    handleFormSubmit = async (evt) => {
+        const item = await addItem({ ...this.state });
         this.props.addItem(item)
-      }
+        
+    }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
-                <h1>Add a new item to that list</h1>
+                <form
+                    style={{
+                        color: 'red'
+                    }}
+                    onSubmit={evt => { this.handleFormSubmit(evt.preventDefault()) }}
+                >
 
+                    <div>
+                        <input
+                            type='text'
+                            placeholder='tell us about the item'
+                            style={{
+                                width: '40rem',
+                                height: '3rem'
+                            }}
+                            name='title'
+                            onChange={this.handleFormChanges}
+                            
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type='text'
+                            placeholder='tell us about the item'
+                            style={{
+                                width: '40rem',
+                                height: '3rem'
+                            }}
+                            name='description'
+                            onChange={this.handleFormChanges}
+                            
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type='text'
+                            placeholder='tell us about the item'
+                            style={{
+                                width: '40rem',
+                                height: '3rem'
+                            }}
+                            name='photo'
+                            onChange={this.handleFormChanges}
+                            
+                        />
+                    </div>
+                    <div>
+                        <input
+                            type='text'
+                            placeholder='tell us about the item'
+                            style={{
+                                width: '40rem',
+                                height: '3rem'
+                            }}
+                            name='quantity'
+                            onChange={this.handleFormChanges}
+                            
+                        />
+                    </div>
+                    <div>
+                        <input type="submit"
+                            className='submit-button'
+                            placeholder='SUBMIT REVIEW'
+                        />
+                    </div>
+                </form>
             </div>
         )
     }
 }
+
+export default ItemForm;

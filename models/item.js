@@ -5,6 +5,6 @@ const itemSchema = new Schema({
     title:String,
     description: String,
     photo: String,
-    quantity: Number
+    quantity: String
 })
 module.exports = mongoose.model('Item', itemSchema)
