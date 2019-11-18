@@ -5,6 +5,7 @@ module.exports = {
     addItem
 }
 
+// handles all Items route
 async function indexItems(req, res){
     try {
         let items = await Item.find({})
@@ -15,6 +16,7 @@ async function indexItems(req, res){
     }
 }
 
+// handles the creation of a new item route
 async function addItem(req,res){
     try{
         let item =await new Item(req.body)

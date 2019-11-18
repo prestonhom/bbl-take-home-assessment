@@ -78,7 +78,7 @@ class App extends Component {
                   </tr>
                   {this.state.items.map((s, idx) => {
                     return (
-                      <tr key={idx} className='table-data' style={{ textAlign: 'center' }}>
+                      <tr className='table-data' key={idx}  style={{ textAlign: 'center' }}>
                         <td>
                           <input
                             type="checkbox"
@@ -89,7 +89,7 @@ class App extends Component {
                         </td>
                         <td>{s.title}</td>
                         <td>{s.description}</td>
-                        <td>{s.photo}</td>
+                        <td><img src={`${s.photo}`} style={{width:'40px', height:'40px'}}/></td>
                         <td>{s.quantity}</td>
                       </tr>
                     )
