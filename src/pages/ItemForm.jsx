@@ -106,7 +106,6 @@ class ItemForm extends Component {
                             />
 
                         </div>
-                       
                         <div>
                             <input type="submit"
                                 className='submit-button'
