@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .App-logo {
@@ -22,8 +23,25 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
-.table-data:nth-child(even){
-  background-color: red;
+a{
+  text-decoration: none;
+  color:blue;
+}
+button{
+  padding:10px;
+  border-radius:15px;
+  background-color:lightgrey;
   
+}
+button:hover{
+  font-size:130%;
+  cursor:pointer;
+  
+}
+.table{
+  display:grid;
+
+}
+.table-data:nth-child(even){
+  background-color: rgba(46, 177, 77, 0.5);
 }

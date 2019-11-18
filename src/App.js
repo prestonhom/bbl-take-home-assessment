@@ -4,6 +4,7 @@ import './App.css';
 import { getItems } from './utils/itemsService';
 import { Route, Switch, Link } from 'react-router-dom';
 import ItemForm from './pages/ItemForm'
+import Home from './pages/Home'
 
 class App extends Component {
   constructor() {
@@ -57,10 +58,17 @@ class App extends Component {
     return (
       <div>
         <Switch>
+          <Route exact path='/' render={() =>
+            <Home />
+          } />
           <Route exact path='/items' render={() =>
             this.state.items.length
               ?
-              <div>
+              <div style={{ display: 'flex', flexDirection: 'column', margin: 'auto', width: '50%', textAlign: 'center' }}>
+                <div>
+                  <h1>Items</h1>
+                  <button><Link to='/items/add'> click to add an item</Link></button>
+                </div>
                 <table>
                   <tr>
                     <th>
@@ -69,7 +77,7 @@ class App extends Component {
                         onChange={this.handleChange}
                         checked={this.state.selectAll}
                       />
-                      <span style={{fontSize:'10px'}}>SelectAll/UnSelectAll</span>
+                      <span style={{ fontSize: '10px' }}>SelectAll/UnSelectAll</span>
                     </th>
                     <th>Title</th>
                     <th>Description</th>
@@ -78,7 +86,7 @@ class App extends Component {
                   </tr>
                   {this.state.items.map((s, idx) => {
                     return (
-                      <tr className='table-data' key={idx}  style={{ textAlign: 'center' }}>
+                      <tr className='table-data' key={idx} style={{ textAlign: 'center' }}>
                         <td>
                           <input
                             type="checkbox"
@@ -89,7 +97,7 @@ class App extends Component {
                         </td>
                         <td>{s.title}</td>
                         <td>{s.description}</td>
-                        <td><img src={`${s.photo}`} style={{width:'40px', height:'40px'}}/></td>
+                        <td><img src={`${s.photo}`} style={{ width: '40px', height: '40px' }} /></td>
                         <td>{s.quantity}</td>
                       </tr>
                     )
