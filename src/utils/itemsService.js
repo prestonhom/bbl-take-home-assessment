@@ -2,13 +2,13 @@ const BASE_URL = "/api/v1/"
 
 // grabs all the Items 
 export async function getItems() {
-    return fetch(`${BASE_URL}items`)
+    return await fetch(`${BASE_URL}items`)
         .then((res) => res.json())
 }
 
 // adds Item
 export async function addItem(item) {
-    return fetch(`${BASE_URL}items/add`, {
+    return await fetch(`${BASE_URL}items/add`, {
         method: 'POST',
         headers: new Headers({ 'Content-Type': 'application/json' }),
         body: JSON.stringify(item)
